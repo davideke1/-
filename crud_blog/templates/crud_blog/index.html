@@ -1,5 +1,8 @@
 {% extends "crud_blog/base.html" %} 
 {% load static %} 
+{% block title %}
+Oleez :: Home
+{% endblock title %}
 {% block content %}
 <main>
   <section>
@@ -18,79 +21,16 @@
             />
             <div class="carousel-caption">
               <h2 data-animation="animated fadeInRight">
-                <span>Remarkable</span>
+                <span>Zuri</span>
               </h2>
               <h2 data-animation="animated fadeInRight">
-                <span>Digital agency</span>
+                <span>CRUD Blog</span>
               </h2>
               <a
-                href="#!"
+                href="#blogPosts"
                 class="carousel-item-link"
                 data-animation="animated fadeInRight"
-                >EXPLORE PROJECT</a
-              >
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img
-              src="{% static 'images/Banner_2@2x.jpg' %}"
-              alt="Second slide"
-              class="w-100"
-            />
-            <div class="carousel-caption">
-              <h2 data-animation="animated fadeInRight">
-                <span>Remarkable</span>
-              </h2>
-              <h2 data-animation="animated fadeInRight">
-                <span>Digital agency</span>
-              </h2>
-              <a
-                href="#!"
-                class="carousel-item-link"
-                data-animation="animated fadeInRight"
-                >EXPLORE PROJECT</a
-              >
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img
-              src="{% static 'images/Banner_3@2x.jpg' %}"
-              alt="Third slide"
-              class="w-100"
-            />
-            <div class="carousel-caption">
-              <h2 data-animation="animated fadeInRight">
-                <span>Remarkable</span>
-              </h2>
-              <h2 data-animation="animated fadeInRight">
-                <span>Digital agency</span>
-              </h2>
-              <a
-                href="#!"
-                class="carousel-item-link"
-                data-animation="animated fadeInRight"
-                >EXPLORE PROJECT</a
-              >
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img
-              src="{% static 'images/Banner_4@2x.jpg' %}"
-              alt="Fourth slide"
-              class="w-100"
-            />
-            <div class="carousel-caption">
-              <h2 data-animation="animated fadeInRight">
-                <span>Remarkable</span>
-              </h2>
-              <h2 data-animation="animated fadeInRight">
-                <span>Digital agency</span>
-              </h2>
-              <a
-                href="#!"
-                class="carousel-item-link"
-                data-animation="animated fadeInRight"
-                >EXPLORE PROJECT</a
+                >View Blog Posts</a
               >
             </div>
           </div>
@@ -99,7 +39,7 @@
     </div>
   </section>
 
-  <section class="mt-4">
+  <section class="mt-4" id="blogPosts">
     <div class="container">
         <h1 class="oleez-page-title wow fadeInUp">Blog</h1>
         <div class="row">
@@ -109,7 +49,20 @@
                         <img src="{% static 'images/Bloggrid/Bloggrid_2.jpg' %}" alt="blog">
                     </div>
                     <p class="blog-post-date">January 29, 2020</p>
-                    <h5 class="blog-post-title">Why you must experience design at least once</h5>
+                    <a style="color: black;" href="{% url 'article' %}">
+                        <h5 class="blog-post-title">Why you must experience design at least once</h5>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="blog-post-card wow fadeInUp">
+                    <div class="blog-post-thumbnail-wrapper">
+                        <img src="{% static 'images/Bloggrid/Bloggrid_4.jpg' %}" alt="blog">
+                    </div>
+                    <p class="blog-post-date">January 29, 2020</p>
+                    <a style="color: black;" href="{% url 'article' %}">
+                        <h5 class="blog-post-title">Why you must experience design at least once</h5>
+                    </a>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
@@ -118,16 +71,9 @@
                         <img src="{% static 'images/Bloggrid/Bloggrid_8.jpg' %}" alt="blog">
                     </div>
                     <p class="blog-post-date">January 29, 2020</p>
-                    <h5 class="blog-post-title">Why you must experience design at least once</h5>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="blog-post-card wow fadeInUp">
-                    <div class="blog-post-thumbnail-wrapper">
-                        <img src="{% static 'images/Bloggrid/Bloggrid_7.jpg' %}" alt="blog">
-                    </div>
-                    <p class="blog-post-date">January 29, 2020</p>
-                    <h5 class="blog-post-title">Why you must experience design at least once</h5>
+                    <a style="color: black;" href="{% url 'article' %}">
+                        <h5 class="blog-post-title">Why you must experience design at least once</h5>
+                    </a>
                 </div>
             </div>
         </div>
