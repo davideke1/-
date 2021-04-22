@@ -39,45 +39,25 @@ Oleez :: Home
     </div>
   </section>
 
-  <section class="mt-4" id="blogPosts">
+  <section class="mt-4 mb-5" id="blogPosts">
     <div class="container">
         <h1 class="oleez-page-title wow fadeInUp">Blog</h1>
         <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="blog-post-card wow fadeInUp">
-                    <div class="blog-post-thumbnail-wrapper">
-                        <img src="{% static 'images/Bloggrid/Bloggrid_2.jpg' %}" alt="blog">
-                    </div>
-                    <p class="blog-post-date">January 29, 2020</p>
-                    <a style="color: black;" href="{% url 'blog:article' %}">
-                        <h5 class="blog-post-title">Why you must experience design at least once</h5>
-                    </a>
+          {% for article in articles %}
+          <div class="col-md-4 mb-4">
+            <div class="blog-post-card wow fadeInUp">
+                <div class="blog-post-thumbnail-wrapper">
+                    <img src="{% static 'images/Bloggrid/Bloggrid_2.jpg' %}" alt="blog">
                 </div>
+                <p class="blog-post-date">{{ article.timestamp }}</p>
+                <a style="color: black;" href="{{ article.get_absolute_url }}">
+                    <h5 class="blog-post-title">{{ article.title }}</h5>
+                </a>
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="blog-post-card wow fadeInUp">
-                    <div class="blog-post-thumbnail-wrapper">
-                        <img src="{% static 'images/Bloggrid/Bloggrid_4.jpg' %}" alt="blog">
-                    </div>
-                    <p class="blog-post-date">January 29, 2020</p>
-                    <a style="color: black;" href="{% url 'blog:article' %}">
-                        <h5 class="blog-post-title">Why you must experience design at least once</h5>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="blog-post-card wow fadeInUp">
-                    <div class="blog-post-thumbnail-wrapper">
-                        <img src="{% static 'images/Bloggrid/Bloggrid_8.jpg' %}" alt="blog">
-                    </div>
-                    <p class="blog-post-date">January 29, 2020</p>
-                    <a style="color: black;" href="{% url 'blog:article' %}">
-                        <h5 class="blog-post-title">Why you must experience design at least once</h5>
-                    </a>
-                </div>
-            </div>
+          </div>
+          {% endfor %}
         </div>
-        <div class="row">
+        {% comment %} <div class="row">
             <div class="col-12 pb-5 mb-5">
                     <nav class="oleez-pagination d-flex align-items-center justify-content-center wow fadeInUp">
                         <a href="#!" class="active">01</a>
@@ -86,12 +66,12 @@ Oleez :: Home
                         <a href="#!" class="next">&rarr;</a>
                     </nav>
             </div>
-        </div>
+        </div> {% endcomment %}
     </div>
   </section>
 
   {% comment %} Recent News and Stories {% endcomment %}
-  <section class="oleez-landing-section oleez-landing-section-news">
+  {% comment %} <section class="oleez-landing-section oleez-landing-section-news">
     <div class="container">
       <div class="oleez-landing-section-content">
         <div class="oleez-landing-section-verticals wow fadeIn">
@@ -178,6 +158,6 @@ Oleez :: Home
         </div>
       </div>
     </div>
-  </section>
+  </section> {% endcomment %}
 </main>
 {% endblock content %}
