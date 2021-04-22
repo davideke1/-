@@ -46,6 +46,8 @@ Oleez :: Register
             </p>
 
             <form method="POST" class="">
+                {% csrf_token %}
+                
                 <div class="form-group">
                   <label for="username">Username: </label>
                   {{ form.username }}
