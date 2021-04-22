@@ -37,10 +37,10 @@ Aritcle
                         <button class="btn next-post"> Next Post</button>
                     </div> {% endcomment %}
 
-                    {% comment %} <div class="comment-section wow fadeInUp">
+                    <div class="comment-section wow fadeInUp">
                         <h5 class="section-title">Leave a Reply</h5>
                         <form action="POST" class="oleez-comment-form">
-                            <div class="row">
+                            {% comment %} <div class="row">
                                 <div class="form-group col-md-6">
                                     <input type="text" class="oleez-input" id="fullName" name="fullName" required>
                                     <label for="fullName">*Full name</label>
@@ -49,7 +49,7 @@ Aritcle
                                     <input type="email" class="oleez-input" id="fullName" name="email" required>
                                     <label for="email">*Email</label>
                                 </div>
-                            </div>
+                            </div> {% endcomment %}
                             <div class="row">
                                 <div class="form-group col-12">
                                     <label for="message">*Message</label>
@@ -62,7 +62,7 @@ Aritcle
                                 </div>
                             </div>
                         </form>
-                    </div> {% endcomment %}
+                    </div>
                 </div>
             </div>
         </div>
