@@ -6,15 +6,40 @@ Oleez :: Register
 {% endblock title %}
 
 {% block content %}
+<style>
+    section.register_section{
+        padding: 50px;
+    }
+
+    div.register{
+        max-width: 50%;
+        margin: auto;
+    }
+
+    @media screen and (max-width: 785px){
+        div.register{
+            max-width: 90% !important;
+        }
+    }
+    p.h3{
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+</style>
+
 <section class="register_section">
     <div class="container-fluid">
         <div class="register">
-            <form action="" method="post">
+            <p class="h3">
+                Register
+            </p>
+
+            <form action="" method="post" class="">
                 <div class="form-group">
                   <label for="username">Username: </label>
                   <input type="username"
-                    class="form-control" name="username" id="" aria-describedby="helpId" placeholder="Username...">
-                  <small id="helpId" class="form-text text-muted">Help text</small>
+                    class="form-control" name="username" id="" aria-describedby="helpId" placeholder="Username">
                 </div>
                 <div class="form-group">
                   <label for="password">Password:</label>
@@ -23,7 +48,8 @@ Oleez :: Register
                 <div class="form-group">
                     <label for="password">Confirm Password:</label>
                     <input type="password" class="form-control" name="" id="" placeholder="Confirm Password">
-                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </form>
         </div>
     </div>
