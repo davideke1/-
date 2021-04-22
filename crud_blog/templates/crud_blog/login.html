@@ -1,0 +1,57 @@
+{% extends "crud_blog/base.html" %} 
+{% load static %} 
+
+{% block title %}
+Oleez :: Login
+{% endblock title %}
+
+{% block content %}
+<style>
+    section.login_section{
+        padding: 50px;
+    }
+
+    div.register{
+        max-width: 50%;
+        margin: auto;
+    }
+
+    @media screen and (max-width: 785px){
+        div.register{
+            max-width: 90% !important;
+        }
+    }
+    p.h3{
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+</style>
+
+<section class="login_section">
+    <div class="container-fluid">
+        <div class="register">
+            <p class="h3">
+                Login
+            </p>
+
+            <form action="" method="post" class="">
+                <div class="form-group">
+                  <label for="username">Username: </label>
+                  <input type="username"
+                    class="form-control" name="username" id="" aria-describedby="helpId" placeholder="Username">
+                </div>
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input type="password" class="form-control" name="" id="" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="password">Confirm Password:</label>
+                    <input type="password" class="form-control" name="" id="" placeholder="Confirm Password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock content %}
