@@ -1,7 +1,26 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from .models import Comment
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, \
+    PasswordResetForm, SetPasswordForm
 
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = [
+            "message"
+        ]
+        widgets = {
+            'message': forms.Textarea(attrs={
+                "name": "message",
+                "id": "message",
+                "rows": "10",
+                "class": "oleez-textarea",
+                "required": "",
+            })
+        }
 
 class UserCreateForm(UserCreationForm):
     """
@@ -67,3 +86,25 @@ class UserLoginForm(forms.Form):
             }
         )
     )
+
+
+class UserPasswordResetForm(PasswordResetForm):
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Email',
+                'id': 'inputEmail3MD',
+            }
+        )
+    )
+
+
+class UserPasswordResetConfirmForm(SetPasswordForm):
+
+    def __init__(self, *args, **kwargs):
+        super(UserPasswordResetConfirmForm, self).__init__(*args, **kwargs)
+        self.fields['new_password1'].widget.attrs['class'] = 'form-control'
+        self.fields['new_password1'].widget.attrs['placeholder'] = 'New Password'
+        self.fields['new_password2'].widget.attrs['class'] = 'form-control'
+        self.fields['new_password2'].widget.attrs['placeholder'] = 'Confirm New Password'
