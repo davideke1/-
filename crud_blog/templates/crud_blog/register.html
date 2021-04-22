@@ -45,19 +45,18 @@ Oleez :: Register
                 Register
             </p>
 
-            <form action="" method="post" class="">
+            <form method="POST" class="">
                 <div class="form-group">
                   <label for="username">Username: </label>
-                  <input type="username"
-                    class="form-control" name="username" id="" aria-describedby="helpId" placeholder="Username">
+                  {{ form.username }}
                 </div>
                 <div class="form-group">
                   <label for="password">Password:</label>
-                  <input type="password" class="form-control" name="" id="" placeholder="Password">
+                  {{ form.password1 }}
                 </div>
                 <div class="form-group">
                     <label for="password">Confirm Password:</label>
-                    <input type="password" class="form-control" name="" id="" placeholder="Confirm Password">
+                    {{ form.password2 }}
                 </div>
                 <div class="form-group">
                     <p class="h5 text-muted d-flex mb-3">

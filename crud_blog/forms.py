@@ -12,7 +12,7 @@ class UserCreateForm(UserCreationForm):
     password1 = forms.CharField(
         widget=forms.PasswordInput(attrs={
             'autocomplete': 'new-password',
-            'class': 'form-control password_input',
+            'class': 'form-control',
             'id': 'confirmPassword1',
             'required': 'true',
             }
@@ -21,7 +21,7 @@ class UserCreateForm(UserCreationForm):
     password2 = forms.CharField(
         widget=forms.PasswordInput(attrs={
             'autocomplete': 'new-password',
-            'class': 'form-control password_input',
+            'class': 'form-control',
             'id': 'confirmPassword2',
             'required': 'true',
             }
@@ -33,7 +33,7 @@ class UserCreateForm(UserCreationForm):
         widgets = {
         'username': forms.TextInput(attrs={
             'autocomplete': 'username',
-            'class': 'form-control user_input',
+            'class': 'form-control',
             'id': 'validationCustomUsername',
             'aria-describedby': 'inputGroupPrepend',
             'required': 'true',
