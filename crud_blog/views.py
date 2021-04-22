@@ -1,14 +1,41 @@
-from django.shortcuts import render
-from .forms import UserCreateForm, UserLoginForm
+from django.shortcuts import render, redirect
+from .forms import UserCreateForm, UserLoginForm, CommentForm
 from django.contrib.auth import authenticate, login, logout
-
+from .models import Article, Comment
 
 def home(request):
-    return render(request, "crud_blog/index.html")
+    articles = Article.objects.all()[:3]
+
+    context = {
+        "articles": articles
+    }
+    return render(request, "crud_blog/index.html", context)
 
 
-def article(request):
-    return render(request, "crud_blog/blog-single.html")
+def article(request, pk):
+    article = Article.objects.get(id=pk)
+    comments = Comment.objects.all()
+    form = CommentForm()
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            message = form.cleaned_data.get("message")
+
+            comment = Comment(
+                user = request.user,
+                message = message,
+                article = article
+            )
+            comment.save()
+            return redirect("")
+
+    context = {
+        "article": article,
+        "form": form,
+        "comments": comments
+    }
+    return render(request, "crud_blog/blog-single.html", context)
 
 
 def register(request):
@@ -16,6 +43,7 @@ def register(request):
 
     if request.method == "POST":
         form = UserCreateForm(request.POST)
+
         if form.is_valid():
             form.save()
             return redirect("blog:login")
@@ -28,7 +56,7 @@ def register(request):
     return render(request, "crud_blog/register.html", context)
 
 
-def login(request):
+def login_page(request):
     form = UserLoginForm()
 
     if request.method == "POST":
@@ -40,13 +68,9 @@ def login(request):
             user = authenticate(
                 request, username=username, password=password
             )
-            profile = Profile(
-                user = username
-            )
-            profile.save()
             if user is not None:
                 login(request, user)
-                return redirect("blog:dashboard")
+                return redirect("blog:home")
         return redirect("blog:login")
 
     context = {
