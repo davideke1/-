@@ -21,10 +21,21 @@ Oleez :: Login
             max-width: 90% !important;
         }
     }
+
     p.h3{
         font-size: 32px;
         font-weight: 600;
         margin-bottom: 20px;
+    }
+
+    p.h5{
+        font-size: 16px;
+    }
+
+    a.register_link{
+        padding-left: 10px;
+        color: #f7b500;
+        font-size: 16px;
     }
 </style>
 
@@ -46,10 +57,14 @@ Oleez :: Login
                   <input type="password" class="form-control" name="" id="" placeholder="Password">
                 </div>
                 <div class="form-group">
-                    <label for="password">Confirm Password:</label>
-                    <input type="password" class="form-control" name="" id="" placeholder="Confirm Password">
+                    <p class="h5 text-muted d-flex mb-3">
+                        Don't have an account? 
+                        <a href="{% url "blog:register" %}" class="register_link">
+                            Register
+                        </a>
+                    </p>
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </form>
         </div>
     </div>
