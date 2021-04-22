@@ -1,0 +1,31 @@
+{% extends "crud_blog/base.html" %} 
+{% load static %} 
+
+{% block title %}
+Oleez :: Register
+{% endblock title %}
+
+{% block content %}
+<section class="register_section">
+    <div class="container-fluid">
+        <div class="register">
+            <form action="" method="post">
+                <div class="form-group">
+                  <label for="username">Username: </label>
+                  <input type="username"
+                    class="form-control" name="username" id="" aria-describedby="helpId" placeholder="Username...">
+                  <small id="helpId" class="form-text text-muted">Help text</small>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input type="password" class="form-control" name="" id="" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="password">Confirm Password:</label>
+                    <input type="password" class="form-control" name="" id="" placeholder="Confirm Password">
+                  </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock content %}
