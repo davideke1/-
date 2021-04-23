@@ -39,6 +39,16 @@ def article(request, pk):
     return render(request, "crud_blog/blog-single.html", context)
 
 
+def update_article(request, pk):
+    article = Article.objects.get(id=pk)
+    return redirect("blog:article")
+    
+
+def delete_article(request, pk):
+    article = Article.objects.get(id=pk)
+    article.delete()
+    return redirect("blog:home")
+
 def register_page(request):
     form = UserCreateForm()
 
@@ -86,4 +96,4 @@ def logout_page(request):
 
 
 def about(request):
-    pass
+    return render(request, "crud_blog/about.html")
