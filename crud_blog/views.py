@@ -3,6 +3,7 @@ from .forms import UserCreateForm, UserLoginForm, CommentForm
 from django.contrib.auth import authenticate, login, logout
 from .models import Article, Comment
 
+
 def home(request):
     articles = Article.objects.all()[:3]
 
@@ -38,7 +39,7 @@ def article(request, pk):
     return render(request, "crud_blog/blog-single.html", context)
 
 
-def register(request):
+def register_page(request):
     form = UserCreateForm()
 
     if request.method == "POST":
@@ -81,10 +82,7 @@ def login_page(request):
 
 def logout_page(request):
     logout(request)
-
-
-def reset_password(request):
-    return render(request, "crud_blog/reset-password.html")
+    return redirect("blog:home")
 
 
 def about(request):
