@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import home, article, about, register_page, login_page,\
-    logout_page
+    logout_page, update_article, delete_article, create_article
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, \
     PasswordResetConfirmView, PasswordResetCompleteView
 
@@ -13,11 +13,16 @@ app_name = "blog"
 
 urlpatterns = [
     path('', home, name="home"),
-    path('<int:pk>/', article, name="article"),
     path('about/', about, name="about"),
     path('register/', register_page, name="register"),
     path('login/', login_page, name="login"),
     path('logout/', logout_page, name="logout"),
+
+    # Article CRUD
+    path('create-article/', create_article, name="create"),
+    path('<int:pk>/', article, name="article"),
+    path('update/<int:pk>/', update_article, name="update"),
+    path('confirm-delete/', delete_article, name="delete"),
 
     # Password Reset
     path('password-reset/', PasswordResetView.as_view(

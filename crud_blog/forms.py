@@ -1,8 +1,35 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Comment
+from .models import Comment, Article
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, \
     PasswordResetForm, SetPasswordForm
+
+
+class ArticleForm(forms.ModelForm):
+
+    image = forms.FileField()
+
+    class Meta:
+        model = Article
+        fields = [
+            "title", "content", "image"
+        ]
+        widgets = {
+            'title': forms.TextInput(attrs={
+            'autocomplete': 'title',
+            'class': 'form-control oleez-textinput',
+            'id': 'validationCustomTitle',
+            'aria-describedby': 'inputGroupPrepend',
+            'required': 'true',
+        }),
+        'content': forms.Textarea(attrs={
+            "name": "content",
+            "id": "content",
+            "rows": "10",
+            "class": "oleez-textarea form-control",
+            "required": "",
+        })
+    }
 
 
 class CommentForm(forms.ModelForm):

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UserCreateForm, UserLoginForm, CommentForm
+from .forms import UserCreateForm, UserLoginForm, CommentForm, ArticleForm
 from django.contrib.auth import authenticate, login, logout
 from .models import Article, Comment
 
@@ -11,6 +11,31 @@ def home(request):
         "articles": articles
     }
     return render(request, "crud_blog/index.html", context)
+
+
+def create_article(request):
+    form = ArticleForm()
+
+    if request.method == "POST":
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            user = request.user
+            title = form.cleaned_data.get("title")
+            image = form.cleaned_data.get("image")
+            content = form.cleaned_data.get("content")
+
+            article = Article(
+                user=user, title=title, 
+                image=image, content=content
+            )
+            article.save()
+            return redirect("blog:home")
+        return redirect("blog:create")
+
+    context = {
+        "form": form
+    }
+    return render(request, "crud_blog/create-article.html", context)
 
 
 def article(request, pk):
@@ -41,8 +66,12 @@ def article(request, pk):
 
 def update_article(request, pk):
     article = Article.objects.get(id=pk)
-    return redirect("blog:article")
-    
+
+    context = {
+        "article": article
+    }
+    return render(request, "crud_blog/update.html", context)
+
 
 def delete_article(request, pk):
     article = Article.objects.get(id=pk)

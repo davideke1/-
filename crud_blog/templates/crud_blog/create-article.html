@@ -1,0 +1,55 @@
+{% extends "crud_blog/base.html" %} 
+{% load static %} 
+
+{% block title %}
+Oleez :: Create Article
+{% endblock title %}
+
+{% block content %}
+<style>
+    section.article_section{
+        padding: 50px;
+    }
+
+    div.article{
+        max-width: 50%;
+        margin: auto;
+    }
+
+    @media screen and (max-width: 785px){
+        div.article{
+            max-width: 90% !important;
+        }
+    }
+</style>
+
+<section class="article_section">
+    <div class="container-fluid">
+        <div class="article">
+            <p class="h3">
+                Create Article
+            </p>
+
+            <form method="POST" class="mt-5">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                  <label for="title">Title: </label>
+                  {{ form.title }}
+                </div>
+                <div class="form-group">
+                    <label for="image">Image: </label>
+                    {{ form.image }}
+                </div>
+                <div class="form-group">
+                  <label for="content">Content:</label>
+                  {{ form.content }}
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section
+{% endblock content %}
