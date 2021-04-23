@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import UserCreateForm, UserLoginForm, CommentForm, ArticleForm
+from .forms import UserCreateForm, UserLoginForm, CommentForm, ArticleForm,\
+    UpdateArticleForm
 from django.contrib.auth import authenticate, login, logout
 from .models import Article, Comment
 import datetime
@@ -57,7 +58,6 @@ def article(request, pk):
                 article = article
             )
             comment.save()
-            return redirect("")
 
     context = {
         "article": article,
@@ -69,11 +69,20 @@ def article(request, pk):
 
 def update_article(request, pk):
     article = Article.objects.get(id=pk)
+    form = UpdateArticleForm(instance=article)
+
+    if request.method == "POST":
+        form = UpdateArticleForm(request.POST, request.FILES, instance=article)
+        if form.is_valid():
+            form.save()
+            return redirect("blog:home")
+        return redirect("blog:update")
 
     context = {
-        "article": article
+        "article": article,
+        "form": form
     }
-    return render(request, "crud_blog/update.html", context)
+    return render(request, "crud_blog/update-article.html", context)
 
 
 def confirm_delete_article(request, pk):
