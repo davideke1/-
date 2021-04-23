@@ -13,6 +13,9 @@ import os
 from pathlib import Path
 import dj_database_url
 import json
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +26,8 @@ with open(os.path.join(BASE_DIR, 'config.json')) as config_file:
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config["SECRET_KEY"]
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -94,13 +96,13 @@ elif DEBUG is False:
 
             'ENGINE': 'django.db.backends.postgresql',
 
-            'NAME': config["NAME"],
+            'NAME': os.environ.get("NAME"),
 
-            'USER': config["USER"],
+            'USER': os.environ.get("USER"),
 
-            'PASSWORD': config["PASSWORD"],
+            'PASSWORD': os.environ.get("PASSWORd"),
 
-            'HOST': config["HOST"],
+            'HOST': os.environ.get("HOST"),
 
             'PORT': 5432,
         }
