@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static "vendors/slick-carousel/slick.css" %}">
     <link rel="stylesheet" href="{% static "vendors/slick-carousel/slick-theme.css" %}">
     <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="shortcut icon" href="{% static "images/Logo_2.svg" %}" type="image/x-icon">
     <script src="https://kit.fontawesome.com/6e47be172b.js" crossorigin="anonymous"></script>
     <script src="{% static "vendors/jquery/jquery.min.js" %}"></script>
     <script src="{% static "js/loader.js" %}"></script>
@@ -29,11 +30,19 @@
                     <img src="{% static 'images/search.svg' %}" alt="search" />
                     </a>
                 </li>
+                {% if not user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link nav-link-btn" href="#!">
-                        <i class="fa fa-user-circle" aria-hidden="true"></i> LOGIN
+                    <a class="nav-link" href="{% url 'blog:register' %}">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i> REGISTER
                     </a>
                 </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blog:logout' %}">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i> LOGOUT
+                    </a>
+                </li>
+                {% endif %}
                 <li class="nav-item dropdown d-none d-sm-block">
                     <a
                     class="nav-link dropdown-toggle"
@@ -88,6 +97,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'blog:register' %}">
                         <i class="fa fa-user-circle" aria-hidden="true"></i> REGISTER
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blog:logout' %}">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i> LOGOUT
                     </a>
                 </li>
                 {% endif %}
