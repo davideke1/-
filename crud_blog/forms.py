@@ -95,6 +95,8 @@ class UserPasswordResetForm(PasswordResetForm):
                 'class': 'form-control',
                 'placeholder': 'Email',
                 'id': 'inputEmail3MD',
+                'aria-describedby': 'emailHelpId',
+                'placeholder': 'Email Address'
             }
         )
     )
