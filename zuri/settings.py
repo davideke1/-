@@ -87,8 +87,23 @@ if DEBUG is True:
         }
     }
 elif DEBUG is False:
-    DATABASES = {}
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+    DATABASES = {
+
+        'default': {
+
+            'ENGINE': 'django.db.backends.postgresql',
+
+            'NAME': config["NAME"],
+
+            'USER': config["USER"],
+
+            'PASSWORD': config["PASSWORD"],
+
+            'HOST': config["HOST"],
+
+            'PORT': 5432,
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
