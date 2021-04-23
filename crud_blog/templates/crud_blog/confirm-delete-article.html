@@ -1,0 +1,22 @@
+{% extends "crud_blog/base.html" %} 
+{% load static %} 
+{% block title %}
+Oleez :: Home
+{% endblock title %}
+{% block content %}
+<main class="error-page">
+    <div class="container">
+        <h1 class="error-code wow fadeInUp">Confirm Delete</h1>
+        <p class="error-description wow fadeInUp">Are you sure you want to delete this article?</p>
+
+        <div class="d-flex mt-3">
+            <a href="{{ article.get_confirm_delete_url }}" class="btn btn-danger mr-3">
+                Yup, I do.
+            </a>
+            <a href="" class="btn btn-primary text-white">
+                Nay, take me back.
+            </a>
+        </div>
+    </div>
+</main>
+{% endblock content %}

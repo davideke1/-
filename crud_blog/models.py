@@ -19,8 +19,11 @@ class Article(models.Model):
     def get_update_url(self):
         return reverse("blog:update", kwargs={"pk": self.pk})
 
-    def get_delete_url(self):
-        return reverse("blog:delete", kwargs={"pk": self.pk})
+    # def get_delete_url(self):
+    #     return reverse("blog:confirm-delete")
+
+    def get_confirm_delete_url(self):
+        return reverse("blog:delete", kwargs={"pk": self.id})
     
 
 

@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import home, article, about, register_page, login_page,\
-    logout_page, update_article, delete_article, create_article
+    logout_page, update_article, delete_article, create_article, confirm_delete_article
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, \
     PasswordResetConfirmView, PasswordResetCompleteView
 
@@ -22,7 +22,8 @@ urlpatterns = [
     path('create-article/', create_article, name="create"),
     path('<int:pk>/', article, name="article"),
     path('update/<int:pk>/', update_article, name="update"),
-    path('confirm-delete/', delete_article, name="delete"),
+    # path('confirm-delete/<int:pk>/', confirm_delete_article, name="confirm-delete"),
+    path('delete/<int:pk>/', delete_article, name="delete"),
 
     # Password Reset
     path('password-reset/', PasswordResetView.as_view(

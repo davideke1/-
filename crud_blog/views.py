@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect
 from .forms import UserCreateForm, UserLoginForm, CommentForm, ArticleForm
 from django.contrib.auth import authenticate, login, logout
 from .models import Article, Comment
+import datetime
 
+date = datetime.datetime.now()
 
 def home(request):
-    articles = Article.objects.all()[:3]
+    articles = Article.objects.all().order_by("-timestamp")[:3]
 
     context = {
         "articles": articles
@@ -17,7 +19,7 @@ def create_article(request):
     form = ArticleForm()
 
     if request.method == "POST":
-        form = ArticleForm(request.POST)
+        form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             user = request.user
             title = form.cleaned_data.get("title")
@@ -26,6 +28,7 @@ def create_article(request):
 
             article = Article(
                 user=user, title=title, 
+                timestamp = date,
                 image=image, content=content
             )
             article.save()
@@ -71,6 +74,11 @@ def update_article(request, pk):
         "article": article
     }
     return render(request, "crud_blog/update.html", context)
+
+
+def confirm_delete_article(request, pk):
+    article = Article.objects.get(id=pk)
+    return render(request, "crud_blog/confirm-delete-article.html", {"article": article})
 
 
 def delete_article(request, pk):

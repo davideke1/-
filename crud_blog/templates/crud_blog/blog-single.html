@@ -5,15 +5,34 @@
 Aritcle
 {% endblock title %}
 {% block content %}
+    <style>
+        a.post-date{
+            color: #000 !important;
+            font-size: 16px;
+        }
+    </style>
     <main class="blog-post-single">
         <div class="container">
             <h1 class="post-title wow fadeInUp">{{ article.title }}</h1>
             <div class="row">
                 <div class="col-md-8 blog-post-wrapper">
                     <div class="post-header wow fadeInUp">
-                        <img src="{{ article.image }}" alt="blog post" class="post-featured-image">
-                        <p class="post-date">{{ article.timestamp }}</p>
+                        <img src="{{ article.image.url }}" alt="blog post" class="post-featured-image">
+                        
+                        <div class="d-flex">
+                            <p class="post-date mr-3">{{ article.timestamp }}</p>
+                            
+                            <a href="{{ article.get_update_url }}" class="post-date text-black mr-2">
+                                Edit <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            
+                            <a href="{{ article.get_confirm_delete_url }}" class="post-date text-black">
+                                Delete <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        
                     </div>
+
                     <div class="post-content wow fadeInUp mb-5">
                         <p>
                             {{ article.content }}

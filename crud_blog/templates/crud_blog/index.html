@@ -5,6 +5,12 @@ Oleez :: Home
 {% endblock title %}
 {% block content %}
 <main>
+  <style>
+    a.post-date{
+        color: #000 !important;
+        font-size: 16px;
+    }
+  </style>
   <section>
     <div class="container wow fadeIn">
       <div
@@ -47,9 +53,23 @@ Oleez :: Home
           <div class="col-md-4 mb-4">
             <div class="blog-post-card wow fadeInUp">
                 <div class="blog-post-thumbnail-wrapper">
-                    <img src="{% static 'images/Bloggrid/Bloggrid_2.jpg' %}" alt="blog">
+                  {% if article.image %}
+                    <img src="{{ article.image.url }}" alt="blog" width="350" height="250">
+                  {% else %}
+                    <img src="{% static 'images/' %}" alt="blog">
+                  {% endif %}  
                 </div>
-                <p class="blog-post-date">{{ article.timestamp }}</p>
+                  <div class="d-flex mt-3">
+                    <p class="post-date mr-3">{{ article.timestamp }}</p>
+                    
+                    <a href="{{ article.get_update_url }}" class="post-date text-black mr-2">
+                        Edit <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                    
+                    <a href="{{ article.get_confirm_delete_url }}" class="post-date text-black">
+                        Delete <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </div>
                 <a style="color: black;" href="{{ article.get_absolute_url }}">
                     <h5 class="blog-post-title">{{ article.title }}</h5>
                 </a>
