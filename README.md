@@ -1,11 +1,14 @@
 # Zuri-CRUD-Blog
 
 
-### UI Preview
+#### This is a blog extending our previous class on Django CRUD Operations.
 
 <br>
 
-#### This is a blog extending our previous class on Django CRUD Operations
+### UI Preview
+![zuri-crdu-blog](zuri-crud-ui.png)
+
+
 
 <br>
 
@@ -20,10 +23,10 @@
 <br>
 
 ### Platform Hosted
-- Heroku:
+- Heroku: https://zuri-crud-blog.herokuapp.com/
 
 
 <br>
 
 ### ER Diagram
-
+![zuri-crdu-blog-er-diagram](zuri-crud-blog.png)
