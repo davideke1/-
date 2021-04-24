@@ -1,8 +1,0 @@
-{
-    "NAME": "dafhjl4tgfgr9s",
-    "USER": "aqvyavwsivjjps",
-    "PASSWORD": "d0026ae8ea0302e2200e0725231a9e36bec97420caaeb6216192f120ac5db968",
-    "HOST": "ec2-174-129-225-160.compute-1.amazonaws.com",
-    "SECRET_KEY": "django-insecure-!*02am2--&&m7a38+brgw47n)$pi%fn$d@4_)peeb$bbcm2$nz",
-    "DATABASE_URL": "postgres://aqvyavwsivjjps:d0026ae8ea0302e2200e0725231a9e36bec97420caaeb6216192f120ac5db968@ec2-174-129-225-160.compute-1.amazonaws.com:5432/dafhjl4tgfgr9s"
-}
